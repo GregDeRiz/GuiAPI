@@ -6,14 +6,14 @@
 
   <groupId>fr.gregderiz</groupId>
   <artifactId>GuiAPI</artifactId>
-  <version>0.1</version>
+  <version>0.2</version>
   <packaging>jar</packaging>
 
   <name>GuiAPI</name>
 
     <description>An API plugin to create and have flexible GUI</description>
     <properties>
-    <java.version>1.8</java.version>
+    <java.version>17</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
