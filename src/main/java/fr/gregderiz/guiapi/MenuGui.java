@@ -22,33 +22,33 @@ public abstract class MenuGui implements Listener {
         this.inventory = Bukkit.createInventory(null, size, MiniMessage.miniMessage().deserialize(name));
     }
 
-    protected int getSize() {
+    public int getSize() {
         return this.size;
     }
 
-    protected String getName() {
+    public String getName() {
         return this.name;
     }
 
-    protected Map<ItemStack, Integer> getItems() {
+    public Map<ItemStack, Integer> getItems() {
         return this.items;
     }
 
-    protected void setItem(ItemStack item, int slot) {
+    public void setItem(ItemStack item, int slot) {
         this.inventory.setItem(slot, item);
         this.items.put(item, slot);
     }
 
-    protected void addItem(ItemStack item) {
+    public void addItem(ItemStack item) {
         this.inventory.addItem(item);
         this.items.put(item, this.inventory.first(item));
     }
 
-    protected void open(Player player) {
+    public void open(Player player) {
         player.openInventory(this.inventory);
     }
 
-    protected Inventory getInventory() {
+    public Inventory getInventory() {
         return this.inventory;
     }
 }
