@@ -31,6 +31,10 @@ public final class MenuManager {
         HandlerList.unregisterAll(menuGui);
     }
 
+    public void unregisterMenus() {
+        this.menuGuis.stream().filter(menuGui -> !menuGui.isOpen()).forEach(HandlerList::unregisterAll);
+    }
+
     public void unregisterAll() {
         this.menuGuis.forEach(HandlerList::unregisterAll);
     }

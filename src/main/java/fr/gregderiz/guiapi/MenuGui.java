@@ -3,7 +3,10 @@ package fr.gregderiz.guiapi;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -15,6 +18,7 @@ public abstract class MenuGui implements Listener {
     private final Map<ItemStack, Integer> items = new HashMap<>();
 
     private final Inventory inventory;
+    private boolean isMenuOpen;
 
     public MenuGui(int size, String name) {
         this.size = size;
@@ -50,5 +54,21 @@ public abstract class MenuGui implements Listener {
 
     public Inventory getInventory() {
         return this.inventory;
+    }
+
+    @EventHandler
+    private void InventoryOpen(InventoryOpenEvent event) {
+        if (!event.getView().getOriginalTitle().equalsIgnoreCase(this.name)) return;
+        this.isMenuOpen = true;
+    }
+
+    @EventHandler
+    private void InventoryClose(InventoryCloseEvent event) {
+        if (!event.getView().getOriginalTitle().equalsIgnoreCase(this.name)) return;
+        this.isMenuOpen = false;
+    }
+
+    public Boolean isOpen() {
+        return this.isMenuOpen;
     }
 }
